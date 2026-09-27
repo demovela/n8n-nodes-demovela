@@ -1,0 +1,58 @@
+{
+  "name": "n8n-nodes-demovela",
+  "version": "1.0.0",
+  "description": "n8n community node for Demovela: OAuth account connection and 6 workflow operations.",
+  "license": "MIT",
+  "homepage": "https://demovela.com",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "demovela",
+    "oauth",
+    "automation"
+  ],
+  "author": {
+    "name": "Demovela",
+    "url": "https://demovela.com",
+    "email": "codex@users.noreply.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demovela/n8n-nodes-demovela.git"
+  },
+  "bugs": {
+    "url": "https://github.com/demovela/n8n-nodes-demovela/issues"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "npm run build && node --test tests/*.test.cjs",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "files": [
+    "dist",
+    "examples"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/DemovelaOAuth2Api.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Demovela/Demovela.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.49.1",
+    "typescript": "5.9.2",
+    "eslint": "9.32.0",
+    "prettier": "3.6.2",
+    "@types/node": "22.19.15"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}

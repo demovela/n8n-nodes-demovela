@@ -1,0 +1,192 @@
+[
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Create Video Draft",
+        "value": "create_video_draft",
+        "description": "Save a brief and template as a draft conversation for review in Demovela. No recording, rendering or credit spending. Use a new UUID requestId per draft; reuse it only when retrying the exact same draft",
+        "action": "Create Video Draft in Demovela"
+      },
+      {
+        "name": "Get Profile",
+        "value": "get_profile",
+        "description": "Read the signed-in customer's own Demovela account profile. Does not search for or identify other people",
+        "action": "Get Profile in Demovela"
+      },
+      {
+        "name": "Get Video",
+        "value": "get_video",
+        "description": "Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs",
+        "action": "Get Video in Demovela"
+      },
+      {
+        "name": "Get Video Status",
+        "value": "get_video_status",
+        "description": "Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs",
+        "action": "Get Video Status in Demovela"
+      },
+      {
+        "name": "List Templates",
+        "value": "list_templates",
+        "description": "Browse the video template catalogue with supported formats and descriptions. Does not render or start a recording",
+        "action": "List Templates in Demovela"
+      },
+      {
+        "name": "List Videos",
+        "value": "list_videos",
+        "description": "Browse existing outputs and saved video briefs in your workspace. An empty list means no saved videos or drafts",
+        "action": "List Videos in Demovela"
+      }
+    ],
+    "default": "get_profile"
+  },
+  {
+    "displayName": "This operation changes data or may use account credits. Review the inputs and the product permissions before running this workflow.",
+    "name": "writeNotice",
+    "type": "notice",
+    "default": "",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Confirm Write Operation",
+    "name": "confirmWrite",
+    "type": "boolean",
+    "default": false,
+    "description": "Whether you authorize this workflow to run the selected write operation, including any applicable product credits",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Request Id",
+    "name": "create_video_draft__requestId",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The request id for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Title",
+    "name": "create_video_draft__title",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The title for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Brief",
+    "name": "create_video_draft__brief",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The brief for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Template Id",
+    "name": "create_video_draft__templateId",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The template id for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "create_video_draft"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Video Id",
+    "name": "get_video__videoId",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The video id for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "get_video"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Video Id",
+    "name": "get_video_status__videoId",
+    "type": "string",
+    "default": "",
+    "required": true,
+    "description": "The video id for this operation",
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "get_video_status"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Additional Fields",
+    "name": "options_list_videos",
+    "type": "collection",
+    "placeholder": "Add Field",
+    "default": {},
+    "displayOptions": {
+      "show": {
+        "operation": [
+          "list_videos"
+        ]
+      }
+    },
+    "options": [
+      {
+        "displayName": "Offset",
+        "name": "offset",
+        "type": "number",
+        "default": 0,
+        "description": "The offset for this operation",
+        "typeOptions": {
+          "minValue": 0,
+          "maxValue": 10000,
+          "numberPrecision": 0
+        }
+      }
+    ]
+  }
+]

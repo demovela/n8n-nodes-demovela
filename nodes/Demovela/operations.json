@@ -1,0 +1,158 @@
+[
+  {
+    "name": "create_video_draft",
+    "title": "Save a video draft",
+    "description": "Save a brief and template as a draft conversation for review in Demovela. No recording, rendering or credit spending. Use a new UUID requestId per draft; reuse it only when retrying the exact same draft.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 65
+        },
+        "brief": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "templateId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": [
+        "requestId",
+        "title",
+        "brief",
+        "templateId"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Save a video draft",
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_profile",
+    "title": "Read your Demovela profile",
+    "description": "Read the signed-in customer's own Demovela account profile. Does not search for or identify other people.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "annotations": {
+      "title": "Read your Demovela profile",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_video",
+    "title": "Read an existing video",
+    "description": "Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "videoId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "videoId"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Read an existing video",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_video_status",
+    "title": "Read video status",
+    "description": "Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "videoId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "videoId"
+      ],
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "Read video status",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "list_templates",
+    "title": "List Demovela video templates",
+    "description": "Browse the video template catalogue with supported formats and descriptions. Does not render or start a recording.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "List Demovela video templates",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "list_videos",
+    "title": "List videos and drafts",
+    "description": "Browse existing outputs and saved video briefs in your workspace. An empty list means no saved videos or drafts.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "offset": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10000,
+          "default": 0
+        }
+      },
+      "additionalProperties": false,
+      "$schema": "http://json-schema.org/draft-07/schema#"
+    },
+    "annotations": {
+      "title": "List videos and drafts",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  }
+]
