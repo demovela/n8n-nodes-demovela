@@ -1,22 +1,79 @@
 [
   {
+    "displayName": "Resource",
+    "name": "resource",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Account",
+        "value": "account"
+      },
+      {
+        "name": "Template",
+        "value": "templates"
+      },
+      {
+        "name": "Video",
+        "value": "videos"
+      },
+      {
+        "name": "Video Draft",
+        "value": "video-drafts"
+      }
+    ],
+    "default": "account"
+  },
+  {
     "displayName": "Operation",
     "name": "operation",
     "type": "options",
     "noDataExpression": true,
     "options": [
       {
-        "name": "Create Video Draft",
-        "value": "create_video_draft",
-        "description": "Save a brief and template as a draft conversation for review in Demovela. No recording, rendering or credit spending. Use a new UUID requestId per draft; reuse it only when retrying the exact same draft",
-        "action": "Create Video Draft in Demovela"
-      },
-      {
         "name": "Get Profile",
         "value": "get_profile",
         "description": "Read the signed-in customer's own Demovela account profile. Does not search for or identify other people",
         "action": "Get Profile in Demovela"
-      },
+      }
+    ],
+    "default": "get_profile",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "account"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "List Templates",
+        "value": "list_templates",
+        "description": "Browse the video template catalogue with supported formats and descriptions. Does not render or start a recording",
+        "action": "List Templates in Demovela"
+      }
+    ],
+    "default": "list_templates",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "templates"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
       {
         "name": "Get Video",
         "value": "get_video",
@@ -30,19 +87,42 @@
         "action": "Get Video Status in Demovela"
       },
       {
-        "name": "List Templates",
-        "value": "list_templates",
-        "description": "Browse the video template catalogue with supported formats and descriptions. Does not render or start a recording",
-        "action": "List Templates in Demovela"
-      },
-      {
         "name": "List Videos",
         "value": "list_videos",
         "description": "Browse existing outputs and saved video briefs in your workspace. An empty list means no saved videos or drafts",
         "action": "List Videos in Demovela"
       }
     ],
-    "default": "get_profile"
+    "default": "get_video",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "videos"
+        ]
+      }
+    }
+  },
+  {
+    "displayName": "Operation",
+    "name": "operation",
+    "type": "options",
+    "noDataExpression": true,
+    "options": [
+      {
+        "name": "Create Video Draft",
+        "value": "create_video_draft",
+        "description": "Save a brief and template as a draft conversation for review in Demovela. No recording, rendering or credit spending. Use a new UUID requestId per draft; reuse it only when retrying the exact same draft",
+        "action": "Create Video Draft in Demovela"
+      }
+    ],
+    "default": "create_video_draft",
+    "displayOptions": {
+      "show": {
+        "resource": [
+          "video-drafts"
+        ]
+      }
+    }
   },
   {
     "displayName": "This operation changes data or may use account credits. Review the inputs and the product permissions before running this workflow.",
@@ -53,6 +133,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -67,6 +150,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -82,6 +168,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -97,6 +186,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -112,6 +204,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -127,6 +222,9 @@
       "show": {
         "operation": [
           "create_video_draft"
+        ],
+        "resource": [
+          "video-drafts"
         ]
       }
     }
@@ -142,6 +240,9 @@
       "show": {
         "operation": [
           "get_video"
+        ],
+        "resource": [
+          "videos"
         ]
       }
     }
@@ -157,6 +258,9 @@
       "show": {
         "operation": [
           "get_video_status"
+        ],
+        "resource": [
+          "videos"
         ]
       }
     }
@@ -171,6 +275,9 @@
       "show": {
         "operation": [
           "list_videos"
+        ],
+        "resource": [
+          "videos"
         ]
       }
     },

@@ -30,7 +30,7 @@ export class Demovela implements INodeType {
   async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
     return executeOperations(
       this,
-      "https://mcp.demovela.com",
+      "https://demovela.com",
       "demovelaOAuth2Api",
       operations as unknown as Operation[],
       routes as Record<string,ResourceRoute>,
