@@ -1,26 +1,26 @@
 {
-  "get_profile": {
-    "method": "GET",
-    "path": "/v1/account"
-  },
-  "list_videos": {
-    "method": "GET",
-    "path": "/v1/videos"
-  },
-  "get_video": {
-    "method": "GET",
-    "path": "/v1/videos/:videoId"
-  },
-  "get_video_status": {
-    "method": "GET",
-    "path": "/v1/videos/:videoId/status"
-  },
-  "create_video_draft": {
-    "method": "POST",
-    "path": "/v1/video-drafts"
-  },
-  "list_templates": {
-    "method": "GET",
-    "path": "/v1/templates"
-  }
+	"get_profile": {
+		"method": "GET",
+		"path": "/v1/account"
+	},
+	"list_videos": {
+		"method": "GET",
+		"path": "/v1/videos"
+	},
+	"get_video": {
+		"method": "GET",
+		"path": "/v1/videos/:videoId"
+	},
+	"get_video_status": {
+		"method": "GET",
+		"path": "/v1/videos/:videoId/status"
+	},
+	"create_video_draft": {
+		"method": "POST",
+		"path": "/v1/video-drafts"
+	},
+	"list_templates": {
+		"method": "GET",
+		"path": "/v1/templates"
+	}
 }
