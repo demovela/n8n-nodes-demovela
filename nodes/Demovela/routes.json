@@ -5,7 +5,11 @@
 	},
 	"list_videos": {
 		"method": "GET",
-		"path": "/v1/videos"
+		"path": "/v1/videos",
+		"pagination": {
+			"items": ["videos"],
+			"kind": "offset"
+		}
 	},
 	"get_video": {
 		"method": "GET",
@@ -21,6 +25,10 @@
 	},
 	"list_templates": {
 		"method": "GET",
-		"path": "/v1/templates"
+		"path": "/v1/templates",
+		"pagination": {
+			"items": ["templates"],
+			"kind": "complete"
+		}
 	}
 }

@@ -13,16 +13,26 @@ export class Demovela implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Demovela',
 		name: 'demovela',
-		icon: { light: 'file:demovela.svg', dark: 'file:demovela.svg' },
+		icon: {
+			light: 'file:demovela.svg',
+			dark: 'file:demovela.svg',
+		},
 		group: ['transform'],
 		version: 1,
 		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 		description: 'Automate your Demovela account',
-		defaults: { name: 'Demovela' },
+		defaults: {
+			name: 'Demovela',
+		},
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
 		usableAsTool: true,
-		credentials: [{ name: 'demovelaOAuth2Api', required: true }],
+		credentials: [
+			{
+				name: 'demovelaOAuth2Api',
+				required: true,
+			},
+		],
 		properties: [
 			{
 				displayName: 'Resource',
@@ -101,14 +111,14 @@ export class Demovela implements INodeType {
 						name: 'Get Video',
 						value: 'get_video',
 						description:
-							'Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs',
+							'Read an existing owned video or draft by ID from List Videos. Download links require product sign-in. Does not start or poll rendering jobs',
 						action: 'Get video in demovela',
 					},
 					{
 						name: 'Get Video Status',
 						value: 'get_video_status',
 						description:
-							'Read an existing owned video or draft by ID from list_videos. Download links require product sign-in. Does not start or poll rendering jobs',
+							'Read an existing owned video or draft by ID from List Videos. Download links require product sign-in. Does not start or poll rendering jobs',
 						action: 'Get video status in demovela',
 					},
 					{
@@ -143,33 +153,6 @@ export class Demovela implements INodeType {
 				default: 'create_video_draft',
 				displayOptions: {
 					show: {
-						resource: ['video-drafts'],
-					},
-				},
-			},
-			{
-				displayName:
-					'This operation changes data or may use account credits. Review the inputs and the product permissions before running this workflow.',
-				name: 'writeNotice',
-				type: 'notice',
-				default: '',
-				displayOptions: {
-					show: {
-						operation: ['create_video_draft'],
-						resource: ['video-drafts'],
-					},
-				},
-			},
-			{
-				displayName: 'Confirm Write Operation',
-				name: 'confirmWrite',
-				type: 'boolean',
-				default: false,
-				description:
-					'Whether you authorize this workflow to run the selected write operation, including any applicable product credits',
-				displayOptions: {
-					show: {
-						operation: ['create_video_draft'],
 						resource: ['video-drafts'],
 					},
 				},
@@ -259,34 +242,70 @@ export class Demovela implements INodeType {
 				},
 			},
 			{
-				displayName: 'Additional Fields',
-				name: 'options_list_videos',
-				type: 'collection',
-				placeholder: 'Add Field',
-				default: {},
+				displayName: 'Return All',
+				name: 'returnAll',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to return all results or only up to a given limit',
 				displayOptions: {
 					show: {
 						operation: ['list_videos'],
 						resource: ['videos'],
 					},
 				},
-				options: [
-					{
-						displayName: 'Offset',
-						name: 'offset',
-						type: 'number',
-						default: 0,
-						description: 'The offset for this operation',
-						typeOptions: {
-							minValue: 0,
-							maxValue: 10000,
-							numberPrecision: 0,
-						},
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: 50,
+				typeOptions: {
+					minValue: 1,
+					numberPrecision: 0,
+				},
+				description: 'Max number of results to return',
+				displayOptions: {
+					show: {
+						operation: ['list_videos'],
+						resource: ['videos'],
+						returnAll: [false],
 					},
-				],
+				},
+			},
+			{
+				displayName: 'Return All',
+				name: 'returnAll',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to return all results or only up to a given limit',
+				displayOptions: {
+					show: {
+						operation: ['list_templates'],
+						resource: ['templates'],
+					},
+				},
+			},
+			{
+				displayName: 'Limit',
+				name: 'limit',
+				type: 'number',
+				default: 50,
+				typeOptions: {
+					minValue: 1,
+					numberPrecision: 0,
+				},
+				description: 'Max number of results to return',
+				displayOptions: {
+					show: {
+						operation: ['list_templates'],
+						resource: ['templates'],
+						returnAll: [false],
+					},
+				},
 			},
 		],
 	};
+
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
 		return executeOperations(
 			this,
